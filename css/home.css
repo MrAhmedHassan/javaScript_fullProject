@@ -1,0 +1,26 @@
+.item-header {
+    color: blue;
+    font-weight: bold;
+}
+
+.item-price {
+    color: red;
+}
+
+.item {
+    border: rgb(206, 196,
+            196) 3px groove;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.navbar-item {
+    font-weight: bold;
+    color: rgb(245, 240, 244);
+}
+
+.all-nav {
+    background-color: rgb(19, 143, 226);
+    border-radius: 1px 1px 5px 5px;
+    margin-bottom: 10px;
+}
