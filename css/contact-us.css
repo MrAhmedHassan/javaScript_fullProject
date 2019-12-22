@@ -47,9 +47,11 @@
 }
 .button1 {
     border-radius: 30px;
-    width: 100%;
     border: 2px solid rgb(238, 216, 216);
-    height: 40px;
     box-sizing: border-box;
     display: inline;
+}
+
+#nav{
+    color: black;    
 }
