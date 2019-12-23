@@ -48,7 +48,16 @@ let viewData = (name, price, photo) => {
 
   //add bootstrap classes
   itemDiv.classList.add("col-md-4");
+  itemDiv.classList.add("d-flex");
+  itemDiv.classList.add("flex-column");
+  // itemDiv.classList.add("justify-content-center");
+  itemHeader.classList.add("align-self-center");
+  itemPrice.classList.add("align-self-start");
+  itemPrice.classList.add("mt-auto");
+  itemDiv.classList.add("align-content-between");
   itemImg.classList.add("img-fluid");
+  imgDiv.classList.add("align-items-center");
+  imgDiv.classList.add("m-auto");
 
   //add css classes
   itemHeader.classList.add("item-header");
