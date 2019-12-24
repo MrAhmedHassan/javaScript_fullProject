@@ -12,58 +12,54 @@
 
 <body>
 
-    <div class="container-fluid p-3 all-nav">
-        <ul class="nav justify-content-center ">
-          <li class="nav-item">
-            <a id="nav" class="nav-link navbar-item"  href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a id="nav" class="nav-link navbar-item" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a id="nav" class="nav-link navbar-item" href="#">ContactUs</a>
-          </li>
-        </ul>
-      </div>
+    
+        <div class="container-fluid p-3 all-nav">
+            <ul class="nav justify-content-center ">
+                <li class="nav-item">
+                    <a id="nav" class="nav-link navbar-item" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a id="nav" class="nav-link navbar-item" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a id="nav" class="nav-link navbar-item" href="#">ContactUs</a>
+                </li>
+            </ul>
+        </div>
+        
+        <form class="form" id="myForm">
 
-    <div class="container">
-        <div class="row justify-content-around">
-            <div class="text1">
-                <h2> Leave us a message</h2>
-                <hr>
-                <p>Contrary to popular belief, Lorem Ipsum is not simply random text.
-                    It has roots in a piece of classical Latin literature from 45 BC,
-                    making it over 2000 years old. Richard McClintock
-                </p>
-            </div>
+        <div class="container">
+            <div class="row justify-content-around">
+                <div class="text1">
+                    <h2> Leave us a message</h2>
+                    <hr>
+                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text.
+                        It has roots in a piece of classical Latin literature from 45 BC,
+                        making it over 2000 years old. Richard McClintock
+                    </p>
+                </div>
 
-            <div class="col-6">
-                <label for="name">Name*</label> <input class="input1" type="text">
-            </div>
-            <div class="col-6">
+
+                <div class="col-6">
+                    <label for="name">Name*</label> <input class="input1" type="text">
+                </div>
+                <div class="col-6">
                 <label for="email">Email*</label> <input class="input2" type="text">
-            </div>
+                </div>
 
-            <div class="col-12" id="div1">
-                <label for="name">Subject*</label> <input class="input3" type="text">
-            </div>
+                <div class="col-12" id="div1">
+                    <label for="subject">Subject*</label> <input class="input3" type="text">
+                </div>
 
-            <div class="col-12" id="div2">
-                <label for="name">Message*</label> <input class="input4" type="text">
+                <div class="col-12" id="div2" >
+                    <label for="message">Message*</label> <textarea aria-label="With textarea" class="msg" type="text"></textarea>
+                </div>
             </div>
-
+            <br>
+            <button type="submit" class="submit" > Send Message </button>
         </div>
-    </div>
-
-    <div class="container">
-        <div class="row ">
-            <div class="col-2" id="div3">
-                <button class="button1"> Send Message</button>
-            </div>
-        </div>
-    </div>
-
-
+    </form>
 </body>
-
+<script src="../js/contact-us.js"></script>
 </html>
