@@ -20,7 +20,7 @@
 }
 
 .all-nav {
-    background-color: rgb(19, 143, 226);
-    border-radius: 1px 1px 5px 5px;
-    margin-bottom: 10px;
+    /* background-color: rgb(19, 143, 226);
+    border-radius: 1px 1px 5px 5px; */
+    margin: 0px !important;
 }

@@ -8,7 +8,15 @@ let sendHttpRequest = (method, url) => {
     xhr.responseType = "json";
 
     xhr.onload = () => {
-      resolve(xhr.response);
+      if (xhr.status == 200) {
+        resolve(xhr.response);
+      } else {
+        reject("Error => the request doesn't success");
+      }
+    };
+
+    xhr.onerror = () => {
+      reject("Error => there is an error during the request");
     };
   });
   return promise;
@@ -18,9 +26,13 @@ let getData = () => {
   sendHttpRequest(
     "GET",
     "https://gist.githubusercontent.com/a7med-hussien/7fc3e1cba6abf92460d69c0437ce8460/raw/da46abcedf99a3d2bef93a322641926ff60db3c3/products.json"
-  ).then(responseData => {
-    useData(responseData);
-  });
+  )
+    .then(responseData => {
+      useData(responseData);
+    })
+    .catch(rejection => {
+      console.log(`the error after rejection is ${rejection}`);
+    });
 };
 
 let useData = data => {
