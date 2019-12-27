@@ -24,3 +24,16 @@
     border-radius: 1px 1px 5px 5px; */
     margin: 0px !important;
 }
+
+body {
+    position: relative;
+    z-index: 1;
+}
+
+.cartbtn {
+    background-color: rgba(18, 173, 245, 0.897);
+    position: fixed;
+    top: 50%;
+    right: 0%;
+    z-index: 2;
+}
