@@ -37,26 +37,92 @@ let getData = () => {
 
 let useData = data => {
   let productsData = data.ProductCollection;
-  console.log(productsData);
   productsData.forEach(element => {
-    viewData(element.Name, element.Price, element.ProductPicUrl);
+    viewData(
+      element.Name,
+      element.Price,
+      element.ProductPicUrl,
+      element.Quantity,
+      element.ProductId,
+      element.ProductPicUrl,
+      element.Category,
+      element.Description
+    );
     console.log(element);
   });
 };
 
-let viewData = (name, price, photo) => {
+let itemDetails = (
+  itemImg,
+  productId,
+  imgLink,
+  category,
+  productName,
+  description,
+  productPrice,
+  productQuantity
+) => {
+  itemImg.addEventListener("click", ev => {
+    $queryString = `productId=${productId}&imgLink=${imgLink}&category=${category}&productName=${productName}&description=${description}&productPrice=${productPrice}&productQuantity=${productQuantity}`;
+    window.open(`../docs/item_description.html?${$queryString}`, "_blank");
+    // window.location.href = "../docs/item_description.html";
+  });
+};
+
+//function to add product to cart and increment the product no
+let addToCart = (cartBtn, productPrice, productQuantity, productId) => {
+  cartBtn.addEventListener("click", ev => {
+    let itemCounter = document.querySelector("#item-counter");
+    let counter = +itemCounter.getAttribute("value");
+    counter++;
+    itemCounter.setAttribute("value", counter);
+    itemCounter.innerHTML = counter;
+
+    let totalPrice = document.querySelector("#total-price");
+    let totalPriceCounter = +totalPrice.getAttribute("value");
+    totalPriceCounter = totalPriceCounter + productPrice;
+    totalPrice.setAttribute("value", totalPriceCounter);
+    totalPrice.innerHTML = totalPriceCounter + "$";
+  });
+};
+
+// function to go to the cart page
+let goToCartPage = () => {
+  let cartSideBtn = document.querySelector("#cart-side-button");
+  cartSideBtn.addEventListener("click", ev => {
+    // window.location.href = "../docs/card.html";
+    window.open("../docs/card.html", "_blank");
+    console.log(cartSideBtn);
+  });
+};
+
+// function to view data in home.html
+let viewData = (
+  name,
+  price,
+  photo,
+  quantity,
+  id,
+  imgLink,
+  category,
+  description
+) => {
   //creat html elements
   let mainDiv = document.querySelector("#allData");
   let itemDiv = document.createElement("div");
   let imgDiv = document.createElement("div");
   let itemImg = document.createElement("img");
+  let cartImg = document.createElement("img");
+  let cartImgDiv = document.createElement("div");
   let itemHeader = document.createElement("h5");
+  let itemFooter = document.createElement("div");
   let itemPrice = document.createElement("h4");
 
   //set the values in the elements
   itemHeader.innerText = name;
   itemPrice.innerText = `$${price}`;
   itemImg.src = photo;
+  cartImg.src = "../resources/cart.png";
 
   //add bootstrap classes
   itemDiv.classList.add("col-md-4");
@@ -64,12 +130,16 @@ let viewData = (name, price, photo) => {
   itemDiv.classList.add("flex-column");
   // itemDiv.classList.add("justify-content-center");
   itemHeader.classList.add("align-self-center");
-  itemPrice.classList.add("align-self-start");
-  itemPrice.classList.add("mt-auto");
+  itemFooter.classList.add("align-self-start");
+  itemFooter.classList.add("mt-auto");
+  // itemPrice.classList.add("align-self-start");
+  // itemPrice.classList.add("mt-auto");
   itemDiv.classList.add("align-content-between");
   itemImg.classList.add("img-fluid");
   imgDiv.classList.add("align-items-center");
   imgDiv.classList.add("m-auto");
+  cartImg.classList.add("img-fluid");
+  cartImgDiv.classList.add("align-self-end");
 
   //add css classes
   itemHeader.classList.add("item-header");
@@ -78,9 +148,27 @@ let viewData = (name, price, photo) => {
 
   //append element inside each other
   itemDiv.appendChild(itemHeader);
+  cartImgDiv.appendChild(cartImg);
+  itemFooter.appendChild(itemPrice);
+  itemFooter.appendChild(cartImgDiv);
   imgDiv.appendChild(itemImg);
   itemDiv.appendChild(imgDiv);
+  itemDiv.appendChild(itemFooter);
   itemDiv.appendChild(itemPrice);
   mainDiv.appendChild(itemDiv);
+
+  itemDetails(
+    imgDiv,
+    id,
+    imgLink,
+    category,
+    name,
+    description,
+    price,
+    quantity
+  );
+
+  addToCart(cartImgDiv, price, quantity, id);
 };
 getData();
+goToCartPage();
