@@ -27,7 +27,7 @@
             </ul>
         </div>
         
-        <form class="form" id="myForm">
+        <form id="form1" class="form" id="myForm">
 
         <div class="container">
             <div class="row justify-content-around">
@@ -42,22 +42,22 @@
 
 
                 <div class="col-6">
-                    <label for="name">Name*</label> <input class="input1" type="text">
+                    <label for="name">Name*</label> <input id="name-input" class="input1" type="text">
                 </div>
                 <div class="col-6">
-                <label for="email">Email*</label> <input class="input2" type="text">
+                <label for="email">Email*</label> <input id ="email-input" class="input2" type="text">
                 </div>
 
                 <div class="col-12" id="div1">
-                    <label for="subject">Subject*</label> <input class="input3" type="text">
+                    <label for="subject">Subject*</label> <input id="subject-input" class="input3" type="text">
                 </div>
 
                 <div class="col-12" id="div2" >
-                    <label for="message">Message*</label> <textarea aria-label="With textarea" class="msg" type="text"></textarea>
+                    <label for="message">Message*</label> <textarea id="message-input" aria-label="With textarea" class="msg" type="text"></textarea>
                 </div>
             </div>
             <br>
-            <button type="submit" class="submit" > Send Message </button>
+            <button type="submit" class="submit" id="sendbtn"> Send Message </button>
         </div>
     </form>
 </body>
