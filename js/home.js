@@ -48,7 +48,7 @@ let useData = data => {
       element.Category,
       element.Description
     );
-    console.log(element);
+    // console.log(element);
   });
 };
 
@@ -70,19 +70,53 @@ let itemDetails = (
 };
 
 //function to add product to cart and increment the product no
-let addToCart = (cartBtn, productPrice, productQuantity, productId) => {
+let addToCart = (
+  cartBtn,
+  productPrice,
+  productQuantity,
+  productId,
+  productName,
+  productImage
+) => {
+  // create key sideCart in the localStorage
+  if (localStorage.getItem("sideCart")) {
+    itemsData = localStorage.getItem("sideCart");
+    itemsData = JSON.parse(itemsData);
+    // console.log(itemsData);
+  } else {
+    itemsData = [];
+    localStorage.setItem("sideCart", itemsData);
+  }
   cartBtn.addEventListener("click", ev => {
-    let itemCounter = document.querySelector("#item-counter");
-    let counter = +itemCounter.getAttribute("value");
-    counter++;
-    itemCounter.setAttribute("value", counter);
-    itemCounter.innerHTML = counter;
+    // set item data in the local storage
+    item = {
+      Id: productId,
+      name: productName,
+      price: productPrice,
+      quantity: productQuantity,
+      image: productImage,
+      number: 1
+    };
 
-    let totalPrice = document.querySelector("#total-price");
-    let totalPriceCounter = +totalPrice.getAttribute("value");
-    totalPriceCounter = totalPriceCounter + productPrice;
-    totalPrice.setAttribute("value", totalPriceCounter);
-    totalPrice.innerHTML = totalPriceCounter + "$";
+    itemsData.push(item);
+    localStorage.setItem("sideCart", JSON.stringify(itemsData));
+    //------------------------------------------------------------------------
+    // retrieve item data from the localStorage the set it in cart
+
+    itemsData = JSON.parse(localStorage.getItem("sideCart"));
+
+    console.log(itemsData);
+    let totalPrice = 0;
+    for (let i = 0; i < itemsData.length; i++) {
+      totalPrice = +totalPrice + itemsData[i].price;
+    }
+    let itemCounter = document.querySelector("#item-counter");
+    itemCounter.setAttribute("value", itemsData.length);
+    itemCounter.innerHTML = itemsData.length;
+
+    let totalPriceElement = document.querySelector("#total-price");
+    totalPriceElement.setAttribute("value", totalPrice);
+    totalPriceElement.innerHTML = totalPrice + "$";
   });
 };
 
@@ -168,7 +202,7 @@ let viewData = (
     quantity
   );
 
-  addToCart(cartImgDiv, price, quantity, id);
+  addToCart(cartImgDiv, price, quantity, id, name, imgLink);
 };
 getData();
 goToCartPage();
