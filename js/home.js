@@ -1,3 +1,14 @@
+if (localStorage.getItem("noon") === null) {
+  console.log("no exixt");
+} else {
+  console.log("exist");
+  if (localStorage.getItem("noon") == "") {
+    console.log("empty");
+  } else {
+    console.log("no empty");
+  }
+}
+
 let sendHttpRequest = (method, url) => {
   const promise = new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
@@ -102,17 +113,29 @@ let addToCart = (
   AddToCart.addEventListener("click", ev => {
     AddToCart.disabled = true;
     AddToCart.innerHTML = "Done";
-    // set item data in the local storage
-    item = {
-      Id: productId,
-      name: productName,
-      price: productPrice,
-      quantity: productQuantity,
-      image: productImage,
-      number: 1
-    };
 
-    itemsData.push(item);
+    let checkItemExist = false;
+    // set item data in the local storage
+    for (let i = 0; i < itemsData.length; i++) {
+      if (productId == itemsData[i].Id) {
+        itemsData[i].number++;
+        checkItemExist = true;
+      }
+    }
+
+    if (!checkItemExist) {
+      item = {
+        Id: productId,
+        name: productName,
+        price: productPrice,
+        quantity: productQuantity,
+        image: productImage,
+        number: 1
+      };
+
+      itemsData.push(item);
+    }
+
     localStorage.setItem("sideCart", JSON.stringify(itemsData));
     //------------------------------------------------------------------------
     // retrieve item data from the localStorage the set it in cart
