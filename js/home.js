@@ -71,7 +71,7 @@ let itemDetails = (
 
 //function to add product to cart and increment the product no
 let addToCart = (
-  cartBtn,
+  AddToCart,
   productPrice,
   productQuantity,
   productId,
@@ -83,11 +83,25 @@ let addToCart = (
     itemsData = localStorage.getItem("sideCart");
     itemsData = JSON.parse(itemsData);
     // console.log(itemsData);
+    let itemCounter = document.querySelector("#item-counter");
+    itemCounter.setAttribute("value", itemsData.length);
+    itemCounter.innerHTML = itemsData.length;
+
+    let totalPrice = 0;
+    for (let i = 0; i < itemsData.length; i++) {
+      totalPrice = +totalPrice + itemsData[i].price * itemsData[i].number;
+    }
+
+    let totalPriceElement = document.querySelector("#total-price");
+    totalPriceElement.setAttribute("value", totalPrice);
+    totalPriceElement.innerHTML = totalPrice + "$";
   } else {
     itemsData = [];
     localStorage.setItem("sideCart", itemsData);
   }
-  cartBtn.addEventListener("click", ev => {
+  AddToCart.addEventListener("click", ev => {
+    AddToCart.disabled = true;
+    AddToCart.innerHTML = "Done";
     // set item data in the local storage
     item = {
       Id: productId,
@@ -108,7 +122,7 @@ let addToCart = (
     console.log(itemsData);
     let totalPrice = 0;
     for (let i = 0; i < itemsData.length; i++) {
-      totalPrice = +totalPrice + itemsData[i].price;
+      totalPrice = +totalPrice + itemsData[i].price * itemsData[i].number;
     }
     let itemCounter = document.querySelector("#item-counter");
     itemCounter.setAttribute("value", itemsData.length);
@@ -146,8 +160,8 @@ let viewData = (
   let itemDiv = document.createElement("div");
   let imgDiv = document.createElement("div");
   let itemImg = document.createElement("img");
-  let cartImg = document.createElement("img");
-  let cartImgDiv = document.createElement("div");
+  // let cartImg = document.createElement("img");
+  let addToCartBtn = document.createElement("button");
   let itemHeader = document.createElement("h5");
   let itemFooter = document.createElement("div");
   let itemPrice = document.createElement("h4");
@@ -156,7 +170,9 @@ let viewData = (
   itemHeader.innerText = name;
   itemPrice.innerText = `$${price}`;
   itemImg.src = photo;
-  cartImg.src = "../resources/cart.png";
+  addToCartBtn.innerHTML = "Add To Cart";
+  addToCartBtn.setAttribute("class", "display-after-click");
+  // cartImg.src = "../resources/cart.png";
 
   //add bootstrap classes
   itemDiv.classList.add("col-md-4");
@@ -172,8 +188,10 @@ let viewData = (
   itemImg.classList.add("img-fluid");
   imgDiv.classList.add("align-items-center");
   imgDiv.classList.add("m-auto");
-  cartImg.classList.add("img-fluid");
-  cartImgDiv.classList.add("align-self-end");
+  // cartImg.classList.add("img-fluid");
+  addToCartBtn.classList.add("align-self-end");
+  addToCartBtn.classList.add("btn");
+  addToCartBtn.classList.add("btn-outline-primary");
 
   //add css classes
   itemHeader.classList.add("item-header");
@@ -182,9 +200,9 @@ let viewData = (
 
   //append element inside each other
   itemDiv.appendChild(itemHeader);
-  cartImgDiv.appendChild(cartImg);
+  // addToCartBtn.appendChild(cartImg);
   itemFooter.appendChild(itemPrice);
-  itemFooter.appendChild(cartImgDiv);
+  itemFooter.appendChild(addToCartBtn);
   imgDiv.appendChild(itemImg);
   itemDiv.appendChild(imgDiv);
   itemDiv.appendChild(itemFooter);
@@ -202,7 +220,7 @@ let viewData = (
     quantity
   );
 
-  addToCart(cartImgDiv, price, quantity, id, name, imgLink);
+  addToCart(addToCartBtn, price, quantity, id, name, imgLink);
 };
 getData();
 goToCartPage();

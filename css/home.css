@@ -29,8 +29,25 @@ body {
     z-index: 1;
 }
 
-.cartbtn {
-    background-color: rgba(224, 93, 17, 0.5);
+/* .cartbtn {
+    background-color: rgb(0, 105, 217);
+    position: fixed;
+    top: 50%;
+    right: 0%;
+    z-index: 2;
+} */
+
+.product-counter {
+    background-color: rgb(255, 174, 0);
+    display: inline-block;
+    padding: 2px;
+    color: rgb(1, 18,
+            252);
+}
+
+.side-card{
+    cursor: pointer;
+    background-color: rgb(0, 105, 217);
     position: fixed;
     top: 50%;
     right: 0%;
