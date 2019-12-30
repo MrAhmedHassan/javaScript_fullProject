@@ -45,5 +45,8 @@ let descHolder = document.getElementById("desc");
 descHolder.innerHTML=desc;
 
 
-
+// to insert price 
+let pri = subQueryString[5].split("=")[1];
+let priHolder = document.getElementById("1");
+priHolder.innerHTML=pri + "$";
 
