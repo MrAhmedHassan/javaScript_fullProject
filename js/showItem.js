@@ -28,7 +28,7 @@ let image = subQueryString[1].split("=")[1];
 let imageHolder = document.getElementById("img1");
 imageHolder.setAttribute("src", image);
 
-// to insert category and description
+// to insert category 
 let cat = subQueryString[2].split("=")[1];
 let catHolder = document.getElementById("cat1");
 catHolder.innerHTML=cat;

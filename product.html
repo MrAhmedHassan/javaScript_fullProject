@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--calling the bootstrap file-->
+    <link href="../javaScript_fullProject/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="../javaScript_fullProject/bootstrap/bootstrap.css" rel="stylesheet">
+    <title>Product</title>
+</head>
+<body>
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <div class="container">
+        <div class="row">
+          <!--start navigation bar -->
+            <div class="col md-12">
+                    <nav class="navbar navbar2 navbar-expand-lg  bg-dark text-light  text-center fixed-top  ">
+                            <a class="navbar-brand text-light" href="index.html">E-Commerce</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                              <span class="navbar-toggler-icon"></span>
+                            </button>
+                          
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                              <ul class="navbar-nav mr-auto mx-auto text-danger">
+                                <li class="nav-item active">
+                                  <a class="nav-link text-light " href="index.html">Home <span class="sr-only ">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link text-light" href="about.html">About</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" href="contact.html">contact us</a>
+                                  </li>
+                                
+                              </ul>
+                              
+                            </div>
+
+                            <div class="pos-f-t">
+                              <div class="collapse" id="navbarToggleExternalContent">
+                                <div class="bg-dark p-4">
+                                  <h4 class="text-white">Collapsed content</h4>
+                                  <span class="text-muted">Toggleable via the navbar brand.</span>
+                                </div>
+                              </div>
+                              <nav class="navbar navbar-dark bg-dark">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                  <span class="navbar-toggler-icon"></span>
+                                </button>
+                              </nav>
+                            </div>
+                          </nav>
+            </div>
+          </div>
+        </div><br><br><br>
+        <br><br><br>
+
+
+
+            <!--show the product with the its details-->
+       
+    
+            <div class="container">
+      
+                <div class="row">
+
+                <div class="col-md-3" id="img" >
+                   
+                    </div>
+                    <div class="col-md-4">
+                      <h2 class="mt-4" id="name" ></h2>
+                      
+                        <p class="mt-4" id="category"></p>
+                        <p class="mt-4" id="desc"></p>
+                          
+                        </div> 
+
+                        <div class="col-md-3 ml-5 bg-light text-dark border rounded-lg">
+
+                            <div class="container" id="go">
+      
+                                <div class="row">
+                
+                                <div class="col-md-12 text-dark mt-4" id="available"><spnan class="font-weight-bold">Availablity :</spnan></div>
+                                <div class="col-md-12 text-danger mt-4" id="price" ><h1></h1></div>
+                                <div class="col-md-12 text-dark mt-4"  ><spnan class="font-weight-bold">Quantity</spnan> </div>
+                                <div class="col-md-12 text-dark mt-4 rounded-lg" id="quantity"><input class="rounded-lg" type="number" value=""></div>
+                                <div class="col-md-12 text-dark  mt-4 rounded-lg"  ><a id="productAdd" class="rounded-lg btn btn-secondary"  >Add to Cart</a></div>
+
+
+
+                            </div></div>
+                                     
+
+                            
+                            
+                       </div>  
+        </div>
+    </div>
+    <script src="product_info.js"></script>
+</body>
+</html>
