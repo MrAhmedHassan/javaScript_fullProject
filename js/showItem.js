@@ -72,14 +72,75 @@ for (let i = 1; i <= maxQuantity; i++) {
   // console.log(object);
 }
 
-if (localStorage.getItem("sideCart")) {
-  localStorageData = JSON.parse(localStorage.getItem("sideCart"));
-  console.log(localStorageData);
-  localStorageData.forEach(element => {
-    if (element.Id == productId) {
-      element.number;
-    }
-  });
-}
+// selectBox.addEventListener("input" , )
+// if (localStorage.getItem("sideCart")) {
+//   localStorageData = JSON.parse(localStorage.getItem("sideCart"));
+//   console.log(localStorageData);
+//   localStorageData.forEach(element => {
+//     if (element.Id == productId) {
+//       element.number;
+//     }
+//   });
+// }
 
 let AddToCart = document.querySelector("#add");
+
+//function to add product to cart and increment the product no
+let addToCart = (
+  AddToCart,
+  productPrice,
+  productQuantity,
+  productId,
+  productName,
+  productImage
+) => {
+  // create key sideCart in the localStorage
+  if (localStorage.getItem("sideCart")) {
+    itemsData = localStorage.getItem("sideCart");
+    itemsData = JSON.parse(itemsData);
+  } else {
+    itemsData = [];
+    localStorage.setItem("sideCart", itemsData);
+  }
+  AddToCart.addEventListener("click", ev => {
+    AddToCart.disabled = true;
+    AddToCart.innerHTML = "Done";
+
+    let checkItemExist = false;
+    // set item data in the local storage
+    for (let i = 0; i < itemsData.length; i++) {
+      if (productId == itemsData[i].Id) {
+        itemsData[i].number++;
+        checkItemExist = true;
+      }
+    }
+
+    if (!checkItemExist) {
+      item = {
+        Id: productId,
+        name: productName,
+        price: productPrice,
+        quantity: productQuantity,
+        image: productImage,
+        number: 1
+      };
+
+      itemsData.push(item);
+    }
+
+    localStorage.setItem("sideCart", JSON.stringify(itemsData));
+  });
+};
+
+addToCart(AddToCart, price, maxQuantity, productId, pro, image);
+
+// if (localStorage.getItem("noon") === null) {
+//   console.log("no exixt");
+// } else {
+//   console.log("exist");
+//   if (localStorage.getItem("noon") == "") {
+//     console.log("empty");
+//   } else {
+//     console.log("no empty");
+//   }
+// }
