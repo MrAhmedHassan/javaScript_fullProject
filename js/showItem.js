@@ -28,25 +28,31 @@ let image = subQueryString[1].split("=")[1];
 let imageHolder = document.getElementById("img1");
 imageHolder.setAttribute("src", image);
 
-// to insert category 
+// to insert category
 let cat = subQueryString[2].split("=")[1];
 let catHolder = document.getElementById("cat1");
-catHolder.innerHTML=cat;
-
+catHolder.innerHTML = cat;
 
 // to insert product name
-let pro = subQueryString[3].split("=")[1].split("%20");
+let pro = subQueryString[3]
+  .split("=")[1]
+  .split("%")
+  .join(" ");
 let proHolder = document.getElementById("proname");
-proHolder.innerHTML=pro;
+proHolder.innerHTML = pro;
 
 // to insert description
-let desc = subQueryString[4].split("=")[1].split("%20");
+let desc = subQueryString[4]
+  .split("=")[1]
+  .split("%")
+  .join(" ");
+console.log(desc);
+let productDesc = desc.replace("%", " ");
+console.log(productDesc);
 let descHolder = document.getElementById("desc");
-descHolder.innerHTML=desc;
+descHolder.innerHTML = desc;
 
-
-// to insert price 
+// to insert price
 let pri = subQueryString[5].split("=")[1];
 let priHolder = document.getElementById("1");
-priHolder.innerHTML=pri + "$";
-
+priHolder.innerHTML = pri + "$";
