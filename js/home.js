@@ -77,6 +77,7 @@ let itemDetails = (
     $queryString = `productId=${productId}&imgLink=${imgLink}&category=${category}&productName=${productName}&description=${description}&productPrice=${productPrice}&productQuantity=${productQuantity}`;
     window.open(`../docs/item_description.html?${$queryString}`, "_blank");
     // window.location.href = "../docs/item_description.html";
+    console.log($queryString);
   });
 };
 
