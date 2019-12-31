@@ -162,7 +162,7 @@ let goToCartPage = () => {
   let cartSideBtn = document.querySelector("#cart-side-button");
   cartSideBtn.addEventListener("click", ev => {
     // window.location.href = "../docs/card.html";
-    window.open("../docs/card.html", "_blank");
+    window.open("../docs/cart.html", "_blank");
     console.log(cartSideBtn);
   });
 };
