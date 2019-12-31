@@ -75,7 +75,7 @@ let itemDetails = (
 ) => {
   itemImg.addEventListener("click", ev => {
     $queryString = `productId=${productId}&imgLink=${imgLink}&category=${category}&productName=${productName}&description=${description}&productPrice=${productPrice}&productQuantity=${productQuantity}`;
-    window.open(`../docs/item_description.html?${$queryString}`, "_blank");
+    window.open(`../docs/showItem.html?${$queryString}`, "_blank");
     // window.location.href = "../docs/item_description.html";
     console.log($queryString);
   });

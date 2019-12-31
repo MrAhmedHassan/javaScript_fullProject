@@ -103,8 +103,8 @@ let viewItem = () => {
 
     //   bootStrap Classes
     product.classList.add("col-md-5");
-    quantityField.classList.add("col-md-1");
-    price.classList.add("col-md-2");
+    quantityField.classList.add("col-md-2");
+    price.classList.add("col-md-1");
     totalPrice.classList.add("col-md-2");
     removeItemDiv.classList.add("col-md-2");
     img.classList.add("img-fluid");
