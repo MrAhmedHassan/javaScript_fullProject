@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>contact us</title>
+    <link href="../css/contact-us.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+  </head>
+
+  <body>
+    <div class="container-fluid p-3 all-nav">
+      <ul class="nav justify-content-center ">
+        <li class="nav-item">
+          <a id="nav" class="nav-link navbar-item" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a id="nav" class="nav-link navbar-item" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a id="nav" class="nav-link navbar-item" href="#">ContactUs</a>
+        </li>
+      </ul>
+    </div>
+
+    <form id="form1" class="form" id="myForm">
+      <div class="container">
+        <div class="row justify-content-around">
+          <div class="text1">
+            <h2>Leave us a message</h2>
+            <hr />
+            <p>
+              Contrary to popular belief, Lorem Ipsum is not simply random text.
+              It has roots in a piece of classical Latin literature from 45 BC,
+              making it over 2000 years old. Richard McClintock
+            </p>
+          </div>
+
+          <div class="col-6">
+            <label for="name">Name*</label>
+            <input id="name-input" class="input1" type="text" />
+          </div>
+          <div class="col-6">
+            <label for="email">Email*</label>
+            <input id="email-input" class="input2" type="text" />
+          </div>
+
+          <div class="col-12" id="div1">
+            <label for="subject">Subject*</label>
+            <input id="subject-input" class="input3" type="text" />
+          </div>
+
+          <div class="col-12" id="div2">
+            <label for="message">Message*</label>
+            <textarea
+              id="message-input"
+              aria-label="With textarea"
+              class="msg"
+              type="text"
+            ></textarea>
+          </div>
+        </div>
+        <br />
+        <button type="submit" class="submit" id="sendbtn">Send Message</button>
+      </div>
+    </form>
+  </body>
+  <script src="../js/contact-us.js"></script>
+</html>
