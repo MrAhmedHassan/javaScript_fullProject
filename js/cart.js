@@ -16,6 +16,8 @@ let viewItem = () => {
 
   let itemsFromLocalStorage = JSON.parse(localStorage.getItem("sideCart"));
 
+  let tableBody = document.querySelector("#table_body");
+
   itemsFromLocalStorage.forEach(element => {
     // get items data from the local storage
     let product_id = element.Id;
@@ -25,6 +27,19 @@ let viewItem = () => {
     let product_number = +element.number;
     let product_max_quantity = +element.quantity;
 
+    let tableRow = document.createElement("tr");
+    let rowNumber = document.createElement("th");
+    let tableDataProduct = document.createElement("td");
+    let tableDataquantity = document.createElement("td");
+    let tableDataPrice = document.createElement("td");
+    let tableDataTotalPrice = document.createElement("td");
+    let tableDataRemoveBtn = document.createElement("td");
+
+    let container_12col_parent = document.createElement("div");
+    let container_row_child = document.createElement("div");
+    container_12col_parent.appendChild(container_row_child);
+    items.appendChild(container_12col_parent);
+
     //   product column
     let product = document.createElement("div");
     let img = document.createElement("img");
@@ -33,7 +48,7 @@ let viewItem = () => {
     productName.innerHTML = product_name;
     product.appendChild(img);
     product.appendChild(productName);
-    items.appendChild(product);
+    container_row_child.appendChild(product);
 
     //   quantity column
     let quantityField = document.createElement("div");
@@ -50,34 +65,38 @@ let viewItem = () => {
     }
 
     quantityField.appendChild(selectBox);
-    items.appendChild(quantityField);
+    container_row_child.appendChild(quantityField);
 
     //   price column
     let price = document.createElement("div");
     price.innerHTML = product_price;
-    items.appendChild(price);
+    container_row_child.appendChild(price);
 
     //   totalPrice column
     let totalPrice = document.createElement("div");
     let selectedValue = selectBox.options[selectBox.selectedIndex].value;
     totalPrice.value = +selectedValue * product_price;
     totalPrice.innerHTML = +selectedValue * product_price;
-    items.appendChild(totalPrice);
+    container_row_child.appendChild(totalPrice);
 
     //   removeBtn Column
+    let removeItemDiv = document.createElement("div");
     let removeItem = document.createElement("button");
     removeItem.innerHTML = "Remove";
     removeItem.setAttribute("id", product_id);
-    items.appendChild(removeItem);
+    removeItemDiv.appendChild(removeItem);
+    container_row_child.appendChild(removeItemDiv);
 
     //   bootStrap Classes
-    product.classList.add("col-3");
-    product.classList.add("col-3");
-    quantityField.classList.add("col-3");
-    price.classList.add("col-2");
-    totalPrice.classList.add("col-2");
-    removeItem.classList.add("col-2");
+    product.classList.add("col-md-3");
+    quantityField.classList.add("col-md-3");
+    price.classList.add("col-md-2");
+    totalPrice.classList.add("col-md-2");
+    removeItemDiv.classList.add("col-md-2");
     img.classList.add("img-fluid");
+    container_12col_parent.classList.add("col-12");
+    container_row_child.classList.add("row");
+    container_row_child.classList.add("item-row");
 
     // change the quantity of the product
     selectBox.addEventListener("input", () => {
@@ -97,17 +116,15 @@ let viewItem = () => {
 
     // remove any Item
     removeItem.addEventListener("click", () => {
+      removeItem.parentElement.parentElement.parentElement.remove();
       let localStorageArr = JSON.parse(localStorage.getItem("sideCart"));
-      //   localStorageArr.splice( localStorageArr.indexOf('foo'), 1 )
-      for (let i = 0; i < localStorageArr.length; i++) {
-        if (removeItem.getAttribute("id") == localStorageArr[i].Id) {
-          //   localStorageArr[i].number = changedSelectedValue;
-          localStorageArr.splice(localStorageArr[i], 1);
-          console.log("helllo for");
+
+      let arrayAfterDeleteItem = localStorageArr.filter(element => {
+        if (element.Id != product_id) {
+          return element;
         }
-      }
-      localStorage.setItem("sideCart", JSON.stringify(localStorageArr));
-      console.log("helllo out for");
+      });
+      localStorage.setItem("sideCart", JSON.stringify(arrayAfterDeleteItem));
     });
   });
 };
