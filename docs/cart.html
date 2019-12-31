@@ -11,10 +11,37 @@
   <body>
     <div class="container-fluid" id="nav"></div>
     <div class="container" id="">
-      <div class="row" id="items"></div>
+      <div class="text-md-center">
+        <h1>Cart</h1>
+      </div>
+      <div>
+        <hr class="line-after-cart" />
+      </div>
+      <div class="container">
+        <div class="row" id="items">
+          <div class="col-3">Product</div>
+          <div class="col-3">Quantity</div>
+          <div class="col-2">Price</div>
+          <div class="col-3">Total</div>
+          <div class="col-1"></div>
+        </div>
+      </div>
     </div>
 
-    <table class="table table-hover" id="products_table">
+    <div class="container">
+      <div class="total-price">
+        <div>
+          <h1>Cart Totals</h1>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-md-6"><h4>Total</h4></div>
+          <div class="col-md-6"><h5>0$</h5></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <table class="table table-hover" id="products_table">
       <thead>
         <tr>
           <th scope="col">Number</th>
@@ -43,7 +70,7 @@
           <td>@mdo</td>
         </tr>
       </tbody>
-    </table>
+    </table> -->
     <script src="../js/cart.js"></script>
   </body>
 </html>

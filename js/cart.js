@@ -16,7 +16,10 @@ let viewItem = () => {
 
   let itemsFromLocalStorage = JSON.parse(localStorage.getItem("sideCart"));
 
-  let tableBody = document.querySelector("#table_body");
+  let totalItemsPriceDiv = document.createElement("div");
+  totalItemsPriceDiv.setAttribute("value", 0);
+
+  let totalItemsPrice = 0;
 
   itemsFromLocalStorage.forEach(element => {
     // get items data from the local storage
@@ -27,13 +30,9 @@ let viewItem = () => {
     let product_number = +element.number;
     let product_max_quantity = +element.quantity;
 
-    let tableRow = document.createElement("tr");
-    let rowNumber = document.createElement("th");
-    let tableDataProduct = document.createElement("td");
-    let tableDataquantity = document.createElement("td");
-    let tableDataPrice = document.createElement("td");
-    let tableDataTotalPrice = document.createElement("td");
-    let tableDataRemoveBtn = document.createElement("td");
+    totalItemsPrice = totalItemsPrice + product_price * product_number;
+    totalItemsPriceDiv.setAttribute("value", totalItemsPrice);
+    totalItemsPriceDiv.innerHTML = totalItemsPrice;
 
     let container_12col_parent = document.createElement("div");
     let container_row_child = document.createElement("div");
@@ -87,6 +86,8 @@ let viewItem = () => {
     removeItemDiv.appendChild(removeItem);
     container_row_child.appendChild(removeItemDiv);
 
+    container_row_child.appendChild(totalItemsPriceDiv);
+
     //   bootStrap Classes
     product.classList.add("col-md-3");
     quantityField.classList.add("col-md-3");
@@ -100,6 +101,7 @@ let viewItem = () => {
 
     // change the quantity of the product
     selectBox.addEventListener("input", () => {
+      totalItemsPrice = 0;
       let changedSelectedValue = +selectBox.options[selectBox.selectedIndex]
         .value;
       let localStorageArr = JSON.parse(localStorage.getItem("sideCart"));
@@ -107,7 +109,14 @@ let viewItem = () => {
         if (selectBox.getAttribute("id") == localStorageArr[i].Id) {
           localStorageArr[i].number = changedSelectedValue;
         }
+
+        // console.log(totalItemsPrice);
+        totalItemsPrice =
+          totalItemsPrice +
+          localStorageArr[i].number * localStorageArr[i].price;
       }
+      totalItemsPriceDiv.setAttribute("value", totalItemsPrice);
+      totalItemsPriceDiv.innerHTML = totalItemsPrice;
 
       localStorage.setItem("sideCart", JSON.stringify(localStorageArr));
       totalPrice.value = +changedSelectedValue * product_price;
@@ -116,6 +125,7 @@ let viewItem = () => {
 
     // remove any Item
     removeItem.addEventListener("click", () => {
+      totalItemsPrice = 0;
       removeItem.parentElement.parentElement.parentElement.remove();
       let localStorageArr = JSON.parse(localStorage.getItem("sideCart"));
 
@@ -124,6 +134,15 @@ let viewItem = () => {
           return element;
         }
       });
+
+      for (let i = 0; i < arrayAfterDeleteItem.length; i++) {
+        totalItemsPrice =
+          totalItemsPrice +
+          arrayAfterDeleteItem[i].number * arrayAfterDeleteItem[i].price;
+      }
+      totalItemsPriceDiv.setAttribute("value", totalItemsPrice);
+      totalItemsPriceDiv.innerHTML = totalItemsPrice;
+      console.log(totalItemsPrice);
       localStorage.setItem("sideCart", JSON.stringify(arrayAfterDeleteItem));
     });
   });
