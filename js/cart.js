@@ -13,11 +13,12 @@ console.log("Hello Cart");
 // }
 let viewItem = () => {
   let items = document.querySelector("#items");
+  let totalPriceDiv = document.querySelector("#total_price");
 
   let itemsFromLocalStorage = JSON.parse(localStorage.getItem("sideCart"));
 
   let totalItemsPriceDiv = document.createElement("div");
-  totalItemsPriceDiv.setAttribute("value", 0);
+  totalPriceDiv.setAttribute("value", 0);
 
   let totalItemsPrice = 0;
 
@@ -31,8 +32,8 @@ let viewItem = () => {
     let product_max_quantity = +element.quantity;
 
     totalItemsPrice = totalItemsPrice + product_price * product_number;
-    totalItemsPriceDiv.setAttribute("value", totalItemsPrice);
-    totalItemsPriceDiv.innerHTML = totalItemsPrice;
+    totalPriceDiv.setAttribute("value", totalItemsPrice);
+    totalPriceDiv.innerHTML = totalItemsPrice + "$";
 
     let container_12col_parent = document.createElement("div");
     let container_row_child = document.createElement("div");
@@ -42,16 +43,28 @@ let viewItem = () => {
     //   product column
     let product = document.createElement("div");
     let img = document.createElement("img");
+    let imgDiv = document.createElement("div");
     let productName = document.createElement("div");
+    let productRow = document.createElement("div");
     img.src = product_image;
     productName.innerHTML = product_name;
-    product.appendChild(img);
-    product.appendChild(productName);
+
+    productRow.classList.add("row");
+    imgDiv.classList.add("col-6");
+    productName.classList.add("col-6");
+    productName.classList.add("total-price");
+    imgDiv.appendChild(img);
+    productRow.appendChild(imgDiv);
+    productRow.appendChild(productName);
+    product.appendChild(productRow);
     container_row_child.appendChild(product);
 
     //   quantity column
     let quantityField = document.createElement("div");
     let selectBox = document.createElement("select");
+    selectBox.classList.add("custom-select");
+    selectBox.classList.add("remove-arrow");
+    // selectBox.classList.add("m-3");
     selectBox.setAttribute("id", product_id);
     for (let i = 1; i <= product_max_quantity; i++) {
       let quantity = document.createElement("option");
@@ -68,14 +81,14 @@ let viewItem = () => {
 
     //   price column
     let price = document.createElement("div");
-    price.innerHTML = product_price;
+    price.innerHTML = product_price + "$";
     container_row_child.appendChild(price);
 
     //   totalPrice column
     let totalPrice = document.createElement("div");
     let selectedValue = selectBox.options[selectBox.selectedIndex].value;
     totalPrice.value = +selectedValue * product_price;
-    totalPrice.innerHTML = +selectedValue * product_price;
+    totalPrice.innerHTML = +selectedValue * product_price + "$";
     container_row_child.appendChild(totalPrice);
 
     //   removeBtn Column
@@ -89,8 +102,8 @@ let viewItem = () => {
     container_row_child.appendChild(totalItemsPriceDiv);
 
     //   bootStrap Classes
-    product.classList.add("col-md-3");
-    quantityField.classList.add("col-md-3");
+    product.classList.add("col-md-5");
+    quantityField.classList.add("col-md-1");
     price.classList.add("col-md-2");
     totalPrice.classList.add("col-md-2");
     removeItemDiv.classList.add("col-md-2");
@@ -98,6 +111,8 @@ let viewItem = () => {
     container_12col_parent.classList.add("col-12");
     container_row_child.classList.add("row");
     container_row_child.classList.add("item-row");
+    removeItem.classList.add("btn");
+    removeItem.classList.add("btn-danger");
 
     // change the quantity of the product
     selectBox.addEventListener("input", () => {
@@ -115,12 +130,12 @@ let viewItem = () => {
           totalItemsPrice +
           localStorageArr[i].number * localStorageArr[i].price;
       }
-      totalItemsPriceDiv.setAttribute("value", totalItemsPrice);
-      totalItemsPriceDiv.innerHTML = totalItemsPrice;
+      totalPriceDiv.setAttribute("value", totalItemsPrice);
+      totalPriceDiv.innerHTML = totalItemsPrice + "$";
 
       localStorage.setItem("sideCart", JSON.stringify(localStorageArr));
       totalPrice.value = +changedSelectedValue * product_price;
-      totalPrice.innerHTML = +changedSelectedValue * product_price;
+      totalPrice.innerHTML = +changedSelectedValue * product_price + "$";
     });
 
     // remove any Item
@@ -140,8 +155,8 @@ let viewItem = () => {
           totalItemsPrice +
           arrayAfterDeleteItem[i].number * arrayAfterDeleteItem[i].price;
       }
-      totalItemsPriceDiv.setAttribute("value", totalItemsPrice);
-      totalItemsPriceDiv.innerHTML = totalItemsPrice;
+      totalPriceDiv.setAttribute("value", totalItemsPrice);
+      totalPriceDiv.innerHTML = totalItemsPrice + "$";
       console.log(totalItemsPrice);
       localStorage.setItem("sideCart", JSON.stringify(arrayAfterDeleteItem));
     });

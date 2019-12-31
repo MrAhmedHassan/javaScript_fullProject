@@ -12,65 +12,34 @@
     <div class="container-fluid" id="nav"></div>
     <div class="container" id="">
       <div class="text-md-center">
-        <h1>Cart</h1>
+        <h1 class="cart-header">Cart</h1>
       </div>
       <div>
         <hr class="line-after-cart" />
       </div>
-      <div class="container">
+      <div class="px-md-5 pt-md-3">
         <div class="row" id="items">
-          <div class="col-3">Product</div>
-          <div class="col-3">Quantity</div>
+          <div class="col-5 text-md-center">Product</div>
+          <div class="col-1 ">Quantity</div>
           <div class="col-2">Price</div>
-          <div class="col-3">Total</div>
-          <div class="col-1"></div>
+          <div class="col-2">Total</div>
+          <div class="col-2"></div>
         </div>
       </div>
     </div>
 
     <div class="container">
-      <div class="total-price">
+      <div class="total-price-container">
         <div>
           <h1>Cart Totals</h1>
         </div>
         <hr />
         <div class="row">
           <div class="col-md-6"><h4>Total</h4></div>
-          <div class="col-md-6"><h5>0$</h5></div>
+          <div class="col-md-6 total-price" id="total_price">0$</div>
         </div>
       </div>
     </div>
-
-    <!-- <table class="table table-hover" id="products_table">
-      <thead>
-        <tr>
-          <th scope="col">Number</th>
-          <th scope="col">Product</th>
-          <th scope="col">Quantity</th>
-          <th scope="col">Price</th>
-          <th scope="col">TotolPrice</th>
-          <th scope="col">RemoveItem</th>
-        </tr>
-      </thead>
-      <tbody id="table_body">
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>@mdo</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>@mdo</td>
-          <td>@mdo</td>
-        </tr>
-      </tbody>
-    </table> -->
     <script src="../js/cart.js"></script>
   </body>
 </html>
