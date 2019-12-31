@@ -27,33 +27,55 @@
 </div>
   <br>
   <div class="container">
-    <div class="row">
-      <div class="col-sm">
-        <img id="img1" src="" alt=""> </div>
-      <div class="col-sm">
-        <p id="cat1"></p>
-        <p id="proname"></p>
-        <p id="desc"></p>
 
+    <div class="row">
+
+      <div class="col-md-4">
+        <img id="img1" src="" alt="">
+       </div>
+
+      <div class="col-md-4">
+        <p id="cat1" class="product-cat"></p>
+        <p id="proname" class="product-name"></p>
+        <p id="desc" class="product-desc"></p>
       </div>
-      <div class="col-sm">
-        <div class="border">
-          <p style="margin-left: 10px; padding-top: 10px;"> Avalibaility : in stock </p>
+
+      <div class="col-md-4">
+
+        <div class="container side-info">
+          <div class="flex-column p-1 p-md-3">
+            <div class="col p-1 py-3">
+              <!-- One of three columns -->
+              <p  class="stoke col"> Avalibaility :<span style="color: green;"> in stock</span> </p>
+            </div>
+            <div class="col text-center product-price" id="price">
+              1000
+            </div>
+            <div class="col p-1 py-3">
+              <label style="margin-left: 30px;" class=""> Quantity: </label> <br>
+              <select  name="" class="custom-select m-2" id="selectBox">
+      
+              </select >
+            </div>
+            <div class="col p-1 py-4">
+              <button class="col btn btn-primary btn-lg" id="add" >Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="row">
           <hr>
           <h3 class="text text-center" style="padding-top: 10px;" id="1">  </h3>
-          <div>
-          <label style="margin-left: 30px;"> Quantity: </label> <br>
-          <input style="margin-left: 50px; border-radius: 10px;" type="number">
-          </div><br><br><br>
-          <div> 
-          <button style="border-radius: 10px; width: 80%;  margin-left: 30px; height: 40px; " type="button" class="btn btn-secondary">Add to Cart</button>
+          <div class="col">
+        </div><br><br><br>
+        <div> 
           <br><br>
-          </div>
-
         </div>
-
-      </div>
-
+        
+      </div> -->
+      
+    </div>
+    
+    <!-- <input style="margin-left: 50px; border-radius: 10px;" type="number"> -->
       <script src="../js/showItem.js"></script>
 </body>
 
