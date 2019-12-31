@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cart</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/cart.css" />
+    <link rel="stylesheet" href="../css/home.css" />
+  </head>
+  <body>
+    <div class="container-fluid all-nav p-1 p-md-2">
+      <ul class="nav justify-content-center navbar-expand">
+        <li class="nav-item px-md-3">
+          <a class="nav-link navbar-item" href="../docs/home.html">Home</a>
+        </li>
+        <li class="nav-item px-md-3">
+          <a class="nav-link navbar-item" href="../docs/about.html">About</a>
+        </li>
+        <li class="nav-item px-md-3">
+          <a class="nav-link navbar-item" href="../docs/contact_us.html"
+            >Contact Us</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="container-fluid" id="nav"></div>
+    <div class="container" id="">
+      <div class="text-md-center">
+        <h1 class="cart-header">Cart</h1>
+      </div>
+      <div>
+        <hr class="line-after-cart" />
+      </div>
+      <div class="px-md-5 pt-md-3">
+        <div class="row" id="items">
+          <div class="col-5 text-md-center">Product</div>
+          <div class="col-1 ">Quantity</div>
+          <div class="col-2">Price</div>
+          <div class="col-2">Total</div>
+          <div class="col-2"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="total-price-container">
+        <div>
+          <h1>Cart Totals</h1>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-md-6"><h4>Total</h4></div>
+          <div class="col-md-6 total-price" id="total_price">0$</div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/cart.js"></script>
+  </body>
+</html>
